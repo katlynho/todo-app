@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ToDo List</title>
+    <style>
+        :root{--bg:#a0237ce9;--card:#fff;--accent:#3d37bc;--muted:#64748b}
+        *{box-sizing:border-box}
+        body{
+            margin:0; 
+            font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+            background:linear-gradient(180deg,#eef2ff 0,#f7f8fb 100%); 
+            color:#0f172a;
+            min-height:100vh; 
+            display:flex; 
+            flex-direction: column;
+            justify-content:center; 
+            padding:50px;
+        }
+        .app{
+            margin:auto; margin-top: 80px; width:100%; max-width:520px; 
+            background:var(--card); border-radius:12px;
+            box-shadow:0 8px 24px rgba(15,23,42,0.08); padding:20px;
+        }
+        header{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px}
+        header h1{font-size:18px; margin:0}
+        header .count{font-size:13px; color:var(--muted)}
+        .input-row{display:flex; gap:8px; margin-bottom:12px}
+        .input-row input{
+            flex:1; padding:10px 12px; border:1px solid #e6e9f2; border-radius:8px; font-size:14px;
+        }
+        .btn{
+            background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:8px;
+            cursor:pointer; font-weight:600; font-size:14px;
+        }
+        ul.todos{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px}
+        li.todo{
+            display:flex; align-items:center; gap:10px; padding:10px; border-radius:8px;
+            border:1px solid #b5b8c27f; background:linear-gradient(180deg,#fff,#fbfdff);
+        }
+        .todo .title{flex:1; font-size:14px}
+        .todo .edit-input{flex:1; font-size:14px}
+        .todo.completed .title{ text-decoration:line-through; color:var(--muted) }
+        .actions{display:flex; gap:8px}
+        .icon-btn{background:transparent;border:1px solid #b5b8c27f;padding:6px;border-radius:6px;cursor:pointer}
+        .clear-btn{background:#b22e2e;color:white;border:none;padding:6px;border-radius:6px;cursor:pointer;font-weight:500; font-size:13px}
+        .theme-btn{background:transparent; color:black; border:none; padding:6px 12px; border-radius:6px; cursor:pointer; font-weight:500; font-size:13px}
+        .app-footer{display:flex; justify-content:space-between; align-items:center; margin-top:12px; color:var(--muted); font-size:13px}
+        footer{
+            margin-top: auto; 
+            flex-direction:column; 
+            width: 100%; 
+            align-items: flex-start; 
+            justify-content: flex-start; 
+            text-align: left; 
+            margin-top:40px; 
+            color:darkblue; 
+            font-size:11px;}
+        @media (max-width:420px){body{padding:18px} .app{padding:16px}}
+    </style>
+</head>
+<body>
+    <main class="app" role="application" aria-label="To Do List">
+        <header>
+            <h1>To Do</h1>
+            <div class="count" id="count">0 items</div>
+        </header>
+
+        <div class="input-row">
+            <input id="newTodo" type="text" placeholder="Add a new task…" aria-label="New task">
+            <button class="btn" id="addBtn">Add</button>
+        </div>
+
+        <ul class="todos" id="todoList" aria-live="polite"></ul>
+
+        <div class="app-footer">
+            <div id="leftCount">0 left</div>
+            <div>
+                <button id="showCompleted" class="icon-btn" title="Show completed">Show completed</button>
+            </div>
+            <div>
+                <button id="clearCompleted" class="icon-btn" title="Clear completed">Clear completed</button>
+            </div>
+            <div>
+                <button id="clearAll" class="clear-btn" title="Clear all">Clear all</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <button id="themeSwitch" class="theme-btn" title="Dark mode">Dark Mode</button>
+    </footer>
+
+    <!-- <script src="./todo-list.js"></script> -->
+    <script src="./my-script.js"></script>
+</body>
+</html>
