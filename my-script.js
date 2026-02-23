@@ -3,6 +3,7 @@ const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
 const count = document.getElementById('count');
 const leftCount = document.getElementById('leftCount');
+const showCompleted = document.getElementById('showCompleted');
 const clearCompleted = document.getElementById('clearCompleted');
 const clearAll = document.getElementById('clearAll');
 
@@ -26,7 +27,14 @@ function makeTodoItem(text){
     `;
     
     item.querySelector('.toggle').addEventListener('change', e=>{
-        item.classList.toggle('completed', e.target.checked);
+        if (e.target.checked) {
+            item.classList.add('completed');
+            item.style.display = 'none';
+        }
+        else {            
+            item.classList.remove('completed');
+            item.style.display = '';
+        }
         updateCounts();
     });
 
@@ -80,6 +88,23 @@ addBtn.addEventListener('click', ()=>{
 
 newTodo.addEventListener('keydown', e=>{
     if(e.key === 'Enter') addBtn.click();
+});
+
+showCompleted.addEventListener('click', ()=> {
+    const completedItems = document.querySelectorAll('.todo.completed');
+    if (completedItems.length === 0) return;
+    
+    if (showCompleted.textContent === 'Show completed') {
+        completedItems.forEach(todo => todo.style.display = '');
+        showCompleted.textContent = 'Hide completed';
+        showCompleted.style.backgroundColor = '#493e3e2e';
+    } else {
+        completedItems.forEach(todo => {
+                todo.style.display = 'none';
+        });
+        showCompleted.textContent = 'Show completed';
+        showCompleted.style.backgroundColor = '';
+    }
 });
 
 clearAll.addEventListener('click', ()=>{
