@@ -1,3 +1,4 @@
+const app = document.getElementsByClassName('app');
 const newTodo = document.getElementById('newTodo');
 const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
@@ -7,8 +8,7 @@ const showCompleted = document.getElementById('showCompleted');
 const clearCompleted = document.getElementById('clearCompleted');
 const clearAll = document.getElementById('clearAll');
 const sidebar = document.getElementById('MenuSidebar');
-// const sidebarOpenBtn = document.getElementById('sidebarBtn');
-// const sidebarCloseBtn = document.querySelector('.sidebar .closebtn');
+const backdrop = document.getElementById('backdrop');
 
 function updateCounts(){
     const items = todoList.children.length;
@@ -118,16 +118,21 @@ function openNav() {
     sidebar.style.width = '30%';
     sidebar.style.opacity = '1';
     sidebar.style.pointerEvents = 'auto';
-    sidebar.style.boxShadow = '#827f8ef2 0px 8px 50px';
-    sidebar.style.backgroundColor = 'var(--card)';
+    sidebar.style.zIndex = '2';
+    // sidebar.style.boxShadow = '#827f8ef2 0px 8px 50px';
+    // sidebar.style.backgroundColor = 'var(--card)';
+    backdrop.style.display = 'block';
+    // app.style.padding = '0';
 }
 
 function closeNav() {
     sidebar.style.width = '0';
     sidebar.style.opacity = '0';
     sidebar.style.pointerEvents = 'none';
-    sidebar.style.boxShadow = '';
+    // sidebar.style.boxShadow = '';
     sidebar.style.backgroundColor = '';
+    backdrop.style.display = 'none';
+    // app.style.marginLeft = '0';
 }
 
 clearAll.addEventListener('click', ()=>{
